@@ -7,7 +7,7 @@
 }
 
 #components-layout-demo-custom-trigger .trigger:hover {
-  color: #1890ff;
+  color: #ff6600;
 }
 
 #components-layout-demo-custom-trigger .logo {
@@ -18,4 +18,35 @@
 
 .site-layout .site-layout-background {
   background: #fff;
+  box-shadow: 0 0 1.5px #ccc;
+}
+.ant-layout-has-sider{
+  padding: 15px !important;
+}
+.ant-layout-sider-children{
+  background-color: white !important;
+  height: 95vh !important;
+  padding: 15px;
+  
+}
+.ant-layout-header{
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+.ant-menu-dark{
+  background-color: white !important;
+}
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected{
+   background-color: #ff6600 !important;
+   border-radius: 15px;
+}
+.ant-menu-item{
+  color: black !important;
+}
+.anticon svg {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
 }

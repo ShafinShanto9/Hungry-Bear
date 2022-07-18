@@ -43,7 +43,7 @@ const DefaultLayout = ({children}) => {
         <Header
           className="site-layout-background"
           style={{
-            padding: 0,
+            padding: 10,
           }}
         >
           {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
@@ -54,7 +54,7 @@ const DefaultLayout = ({children}) => {
         <Content
           className="site-layout-background"
           style={{
-            margin: '24px 16px',
+            margin: '10px',
             padding: 24,
             minHeight: 280,
           }}
