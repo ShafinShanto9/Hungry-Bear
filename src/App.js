@@ -1,11 +1,7 @@
-import logo from './logo.svg';
-
+import React from 'react';
 import 'antd/dist/antd.css';
-import { Button } from 'antd';
 import {
-  BrowserRouter,
-  Routes,
-  Route,
+  BrowserRouter, Route, Routes
 } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import Items from './pages/Items';
@@ -16,7 +12,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/homepage' element={ <HomePage/>} />
+          <Route path='/home' element={ <HomePage/>} />
           <Route path='/item' element={ <Items/>} />
         </Routes>
       </BrowserRouter>
