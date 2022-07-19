@@ -1,12 +1,15 @@
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
+  HomeOutlined,
   UserOutlined,
-  VideoCameraOutlined,
+  SnippetsOutlined,
+  UnorderedListOutlined,
+  LoginOutlined
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../resources/layout.css'
 const { Header, Sider, Content } = Layout;
 
@@ -16,28 +19,32 @@ const DefaultLayout = ({children}) => {
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
+        <div className='d-flex'>
+          <h3>HUNGRY BEAR </h3>
+          <img src="" alt="" srcset="" />
+        </div>
         <Menu
-          theme="dark"
+          theme='dark'
           mode="inline"
           defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
-            },
-          ]}
-        />
+        >
+          <Menu.Item key='/home' icon={<HomeOutlined />}>
+            <Link to='/home'>Home</Link>
+          </Menu.Item>
+          <Menu.Item key='/bills' icon={<SnippetsOutlined />}>
+            <Link to='/bills'>Bills</Link>
+          </Menu.Item>
+          <Menu.Item key='/items' icon={<UnorderedListOutlined />}>
+            <Link to='/items'>Items</Link>
+          </Menu.Item>
+          <Menu.Item key='/customer' icon={<UserOutlined/>}>
+            <Link to='/customer'>Customer</Link>
+          </Menu.Item>
+          <Menu.Item key='5' icon={<LoginOutlined />}>
+            Logout
+          </Menu.Item>
+
+        </Menu>
       </Sider>
       <Layout className="site-layout">
         <Header

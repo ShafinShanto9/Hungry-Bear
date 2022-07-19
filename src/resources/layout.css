@@ -40,7 +40,7 @@
 }
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected{
    background-color: #ff6600 !important;
-   border-radius: 15px;
+   
 }
 .ant-menu-item{
   color: black !important;
