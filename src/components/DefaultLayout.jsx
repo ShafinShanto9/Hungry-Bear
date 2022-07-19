@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import '../resources/layout.css'
 const { Header, Sider, Content } = Layout;
 
@@ -18,18 +18,17 @@ const DefaultLayout = ({children}) => {
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" />
-        <div className='d-flex'>
+        <div className="logo" >
+          <img src="https://i.ibb.co/dpng4c6/bear-logo.png" alt="" srcset="" />
           <h3>HUNGRY BEAR </h3>
-          <img src="" alt="" srcset="" />
         </div>
         <Menu
           theme='dark'
           mode="inline"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={window.location.pathname}
         >
           <Menu.Item key='/home' icon={<HomeOutlined />}>
-            <Link to='/home'>Home</Link>
+            <Link to='/home'> Home </Link>
           </Menu.Item>
           <Menu.Item key='/bills' icon={<SnippetsOutlined />}>
             <Link to='/bills'>Bills</Link>

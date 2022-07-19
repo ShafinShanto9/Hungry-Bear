@@ -26,8 +26,7 @@
 .ant-layout-sider-children{
   background-color: white !important;
   height: 95vh !important;
-  padding: 15px;
-  
+  padding: 15px 20px 15px 0;
 }
 .ant-layout-header{
   margin: 0 10px;
@@ -38,9 +37,12 @@
 .ant-menu-dark{
   background-color: white !important;
 }
-.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected{
-   background-color: #ff6600 !important;
-   
+.ant-menu-item-selected {
+   background-color: #9E6051 !important;
+   border-radius: 0 8px 8px 0;
+}
+.ant-menu-item-selected span a{
+  color: white !important;
 }
 .ant-menu-item{
   color: black !important;
@@ -50,3 +52,24 @@
   height: 20px;
   font-size: 20px;
 }
+.logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 80px;
+}
+.logo h3{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -15px;
+}
+.logo img{
+  width: 75px;
+  height: 75px;
+}
+.ant-menu-title-content a{
+  color: black !important; 
+}
+
