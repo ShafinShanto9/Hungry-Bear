@@ -11,6 +11,7 @@ import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import '../resources/layout.css'
+import ProfileCard from './ProfileCard';
 const { Header, Sider, Content } = Layout;
 
 const DefaultLayout = ({children}) => {
@@ -44,6 +45,9 @@ const DefaultLayout = ({children}) => {
           </Menu.Item>
 
         </Menu>
+        <div>
+          <ProfileCard/>
+        </div>
       </Sider>
       <Layout className="site-layout">
         <Header
