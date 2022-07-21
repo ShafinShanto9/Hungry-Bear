@@ -20,6 +20,9 @@
   background: #fff;
   box-shadow: 0 0 1.5px #ccc;
 }
+.ant-layout-sider-dark{
+    background-color: white !important;
+}
 .ant-layout-has-sider{
   padding: 15px !important;
 }
