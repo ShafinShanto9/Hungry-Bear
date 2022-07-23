@@ -23,10 +23,10 @@ const HomePage = () => {
   
   return (
       <DefaultLayout>
-          <Row justify="space-between" align="middle">
+          <Row justify="space-between" align="middle" gutter={20}>
         {
           itemsData.map((item) => (
-            <Col span={6}>
+            <Col xs={24} lg={6} md={12} sm={6}>
               <ItemsCard item={ item} />
             </Col>
           ))
