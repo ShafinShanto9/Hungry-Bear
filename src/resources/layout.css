@@ -36,6 +36,7 @@
   display: flex;
   align-items: center;
   border-radius: 5px;
+  justify-content: space-between;
 }
 .ant-menu-dark{
   background-color: white !important;
@@ -76,3 +77,8 @@
   color: black !important; 
 }
 
+/* search box styling */
+.search-btn-styling{
+  background-color: #9E6051;
+  color: white;
+}

@@ -5,10 +5,13 @@ import {
   UserOutlined,
   SnippetsOutlined,
   UnorderedListOutlined,
-  LoginOutlined
+  LoginOutlined,
+  ShoppingCartOutlined,
+  SearchOutlined
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import '../resources/layout.css'
 import ProfileCard from './ProfileCard';
@@ -16,6 +19,7 @@ const { Header, Sider, Content } = Layout;
 
 const DefaultLayout = ({children}) => {
   const [collapsed, setCollapsed] = useState(false);
+  const {cartItems} = useSelector(state => state.rootReducer )
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -60,6 +64,17 @@ const DefaultLayout = ({children}) => {
             className: 'trigger',
             onClick: () => setCollapsed(!collapsed),
           })}
+
+            <div class="input-group ml-3 w-50">
+              <input type="text" class="form-control" placeholder=" Search your product" aria-label="product name" aria-describedby="button-addon2" >
+            </input>
+             <button className='btn search-btn-styling'><SearchOutlined /></button>
+            </div>  
+                   
+            <div className='cart-count d-flex align-items-center font-weight-bold'>
+              <ShoppingCartOutlined />
+              <p className=''>{cartItems.length}</p>
+            </div>
         </Header>
         <Content
           className="site-layout-background"
