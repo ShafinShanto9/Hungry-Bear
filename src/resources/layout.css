@@ -82,3 +82,6 @@
   background-color: #9E6051;
   color: white;
 }
+.cart-count{
+  cursor: pointer
+}
