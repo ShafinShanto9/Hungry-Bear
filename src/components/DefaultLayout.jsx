@@ -11,6 +11,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import '../resources/layout.css'
@@ -19,7 +20,10 @@ const { Header, Sider, Content } = Layout;
 
 const DefaultLayout = ({children}) => {
   const [collapsed, setCollapsed] = useState(false);
-  const {cartItems} = useSelector(state => state.rootReducer )
+  const { cartItems } = useSelector(state => state.rootReducer)
+  useEffect(() => {
+    localStorage.setItem('cartItems',JSON.stringify(cartItems))
+  },[cartItems])
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -71,7 +75,7 @@ const DefaultLayout = ({children}) => {
              <button className='btn search-btn-styling'><SearchOutlined /></button>
             </div>  
                    
-            <div className='cart-count d-flex align-items-center font-weight-bold'>
+            <div className='cart-count d-flex align-items-center font-weight-bold mr-2'>
               <ShoppingCartOutlined />
               <p className=''>{cartItems.length}</p>
             </div>
