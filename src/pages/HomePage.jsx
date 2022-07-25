@@ -5,15 +5,23 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { Col, Row } from 'antd'
 import ItemsCard from '../components/ItemsCard'
+import { useDispatch } from 'react-redux'
 
 const HomePage = () => {
-
+  const dispatch = useDispatch()
   const [itemsData, setItemsData] = useState([])
 
-  const getAllItems = async() => {
+  const getAllItems = async () => {
+
+    dispatch({type: 'showLoading'})
     await axios.get('/api/items/get-all-items').then((res) => {
+
+      dispatch({type: 'hideLoading'})
       setItemsData(res.data);
+
     }).catch((error) => {
+      
+      dispatch({type: 'hideLoading'})
       console.log(error);
     })
   }

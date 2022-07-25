@@ -20,6 +20,14 @@ export const rootReducer = (state=initialState, action) => {
             ...state,
             cartItems: state.cartItems.filter((item)=>item._id !== action.payload._id)
         }
+        case 'showLoading': return {
+            ...state,
+            loading: true
+        }
+        case 'hideLoading': return {
+            ...state,
+            loading: false
+        }
             
         default: return state
     }

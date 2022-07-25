@@ -20,7 +20,7 @@ const { Header, Sider, Content } = Layout;
 
 const DefaultLayout = ({children}) => {
   const [collapsed, setCollapsed] = useState(false);
-  const { cartItems } = useSelector(state => state.rootReducer)
+  const { cartItems, loading } = useSelector(state => state.rootReducer)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -29,6 +29,12 @@ const DefaultLayout = ({children}) => {
   
   return (
     <Layout>
+      {loading && (
+        <div className="spinner">
+          <div class="spinner-border" role="status">
+          </div>  
+        </div>
+      )}
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" >
           <img src="https://i.ibb.co/dpng4c6/bear-logo.png" alt="" srcset="" />
