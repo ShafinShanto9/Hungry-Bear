@@ -16,6 +16,10 @@ export const rootReducer = (state=initialState, action) => {
                 ...item, quantity: action.payload.quantity
             }: item)
         }
+        case 'deleteFromCart': return {
+            ...state,
+            cartItems: state.cartItems.filter((item)=>item._id !== action.payload._id)
+        }
             
         default: return state
     }
