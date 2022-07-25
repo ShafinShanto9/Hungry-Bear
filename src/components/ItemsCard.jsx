@@ -8,7 +8,7 @@ const ItemsCard = ({ item }) => {
   const dispatch = useDispatch()
   
   const addToCart = () => {
-    dispatch({type:'addToCart', payload: item})
+    dispatch({type:'addToCart', payload: {...item, quantity:1}})
   }
   return (
     <div className="card" style={{ width: '18rem', border: "none", marginTop: "20px", padding: "10px", boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}>
