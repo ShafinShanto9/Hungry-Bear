@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import DefaultLayout from '../components/DefaultLayout'
 import {DeleteOutlined,EditOutlined} from '@ant-design/icons'
-import { Button, Modal, Table } from 'antd'
+import { Button, Form, Input, Modal, Select, Table } from 'antd'
+import '../resources/item.css'
 
 const Items = () => {
 
@@ -28,6 +29,19 @@ const Items = () => {
   useEffect(() => {
     getAllItems()
   }, [])
+
+  const addItems = async(values) => {
+
+    dispatch({type: 'showLoading'})
+    await axios.post('/api/items/add-item', values).then((res) => {
+      dispatch({type: 'hideLoading'})
+    }).catch((error) => {
+      
+      dispatch({type: 'hideLoading'})
+      console.log(error);
+    })
+
+  }
 
   const columns = [
         {
@@ -72,7 +86,37 @@ const Items = () => {
       </div>
       <Table columns={columns} dataSource={itemsData} />
 
-      <Modal visible={addEditModalVisibility} title="ADD New Item" footer={false}>
+      <Modal onCancel={()=>setAddEditModalVisibility(false)} visible={addEditModalVisibility} title="ADD New Item" footer={false}>
+
+        <Form layout='vertical' onFinish={addItems}>
+
+          <Form.Item name='name' label='Product Name'>
+            <Input   />
+          </Form.Item>
+          <Form.Item name='price' label='Product Price'>
+            <Input />
+          </Form.Item>
+          <Form.Item name='Image' label='Product Image Url'>
+            <Input   />
+          </Form.Item>
+          <Form.Item name='category' label='Product Category'>
+            <Select>
+              <Select.Option value='burger' >Burger</Select.Option>
+              <Select.Option value='pizza' >Pizza</Select.Option>
+              <Select.Option value='dirnks' >Drinks</Select.Option>
+              <Select.Option value='icecreame' >Ice-Creame</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <div className='d-flex justify-content-end'>
+             <button
+              className='px-4 py-2'
+              type='submit'
+              style={{ backgroundColor: '#9E6051', color: 'white', border: 'none', textAlign: 'center', borderRadius: '5px' }}>
+              Save</button>
+          </div>
+
+        </Form>
 
       </Modal>
     </DefaultLayout>

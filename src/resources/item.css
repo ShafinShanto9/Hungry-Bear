@@ -1,0 +1,10 @@
+input{
+    border: 1px solid gray !important;
+}
+
+input:focus{
+    box-shadow: none !important;
+}
+.ant-select-selector{
+    border: 1px solid gray !important;
+}
