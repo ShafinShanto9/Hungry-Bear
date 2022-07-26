@@ -51,8 +51,8 @@ const DefaultLayout = ({children}) => {
           <Menu.Item key='/bills' icon={<SnippetsOutlined />}>
             <Link to='/bills'>Bills</Link>
           </Menu.Item>
-          <Menu.Item key='/items' icon={<UnorderedListOutlined />}>
-            <Link to='/items'>Items</Link>
+          <Menu.Item key='/item' icon={<UnorderedListOutlined />}>
+            <Link to='/item'>Items</Link>
           </Menu.Item>
           <Menu.Item key='/customer' icon={<UserOutlined/>}>
             <Link to='/customer'>Customer</Link>
