@@ -3,14 +3,15 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import DefaultLayout from '../components/DefaultLayout'
 import {DeleteOutlined,EditOutlined} from '@ant-design/icons'
-import { Button, Form, Input, Modal, Select, Table } from 'antd'
+import { Button, Form, Input, message, Modal, Select, Table } from 'antd'
 import '../resources/item.css'
 
 const Items = () => {
 
   const dispatch = useDispatch()
   const [itemsData, setItemsData] = useState([])
-  const [addEditModalVisibility,setAddEditModalVisibility] = useState(false)
+  const [addEditModalVisibility, setAddEditModalVisibility] = useState(false)
+  const [editingItem, setEditingItem] = useState(null)
 
   const getAllItems = async () => {
 
@@ -30,16 +31,38 @@ const Items = () => {
     getAllItems()
   }, [])
 
-  const addItems = async(values) => {
+  const onFinish = async(values) => {
 
-    dispatch({type: 'showLoading'})
-    await axios.post('/api/items/add-item', values).then((res) => {
-      dispatch({type: 'hideLoading'})
+    dispatch({ type: 'showLoading' })
+    
+    if (editingItem === null) {
+      await axios.post('/api/items/add-item', values).then((res) => {
+      dispatch({ type: 'hideLoading' })
+      message.success('Item added successfully')
+      setAddEditModalVisibility(false)
+      getAllItems()
+
     }).catch((error) => {
-      
-      dispatch({type: 'hideLoading'})
+      dispatch({ type: 'hideLoading' })
+      message.error('something went wrong')
       console.log(error);
+
     })
+    } else {
+       await axios.post('/api/items/edit-item', {...values, itemId: editingItem._id}).then((res) => {
+        dispatch({ type: 'hideLoading' })
+        message.success('Item Updated successfully')
+        setEditingItem(null)
+        setAddEditModalVisibility(false)
+        getAllItems()
+
+    }).catch((error) => {
+      dispatch({ type: 'hideLoading' })
+      message.error('something went wrong')
+      console.log(error);
+
+    })
+   }
 
   }
 
@@ -67,8 +90,12 @@ const Items = () => {
             dataIndex: '_id',
           render: (id, record) => (
             <div className='d-flex'>
+              <EditOutlined className='mx-2' onClick={() => {
+                setEditingItem(record)
+                setAddEditModalVisibility(true)
+
+              }} />
               <DeleteOutlined className='mx-2'/>  
-              <EditOutlined className='mx-2'/>
             </div>
             )
         }
@@ -86,9 +113,18 @@ const Items = () => {
       </div>
       <Table columns={columns} dataSource={itemsData} />
 
-      <Modal onCancel={()=>setAddEditModalVisibility(false)} visible={addEditModalVisibility} title="ADD New Item" footer={false}>
+      {
+        addEditModalVisibility && (
+          <Modal
+            onCancel={() => {
+            setEditingItem(null)
+            setAddEditModalVisibility(false)
+            }}
+            visible={addEditModalVisibility}
+            title={`${editingItem !== null ? 'Edit Items' : 'Add New Items'}`}
+            footer={false}>
 
-        <Form layout='vertical' onFinish={addItems}>
+        <Form initialValues={editingItem} layout='vertical' onFinish={onFinish}>
 
           <Form.Item name='name' label='Product Name'>
             <Input   />
@@ -119,6 +155,8 @@ const Items = () => {
         </Form>
 
       </Modal>
+        )
+      }
     </DefaultLayout>
   )
 }
