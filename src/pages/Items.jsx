@@ -14,7 +14,6 @@ const Items = () => {
   const [editingItem, setEditingItem] = useState(null)
 
   const getAllItems = async () => {
-
     dispatch({type: 'showLoading'})
     await axios.get('/api/items/get-all-items').then((res) => {
 
@@ -27,6 +26,22 @@ const Items = () => {
       console.log(error);
     })
   }
+
+   const deleteItem = async (record) => {
+    dispatch({type: 'showLoading'})
+     await axios.post('/api/items/delete-item', {itemId: record._id})
+       .then((res) => {
+         dispatch({ type: 'hideLoading' })
+         message.success('Item Deleted Successfully')
+          getAllItems()
+      }).catch((error) => {    
+        dispatch({ type: 'hideLoading' })
+        message.error('something went wrong')
+        console.log(error);
+    })
+  }
+
+
   useEffect(() => {
     getAllItems()
   }, [])
@@ -95,7 +110,7 @@ const Items = () => {
                 setAddEditModalVisibility(true)
 
               }} />
-              <DeleteOutlined className='mx-2'/>  
+              <DeleteOutlined className='mx-2' onClick={()=>deleteItem(record)}/>  
             </div>
             )
         }
