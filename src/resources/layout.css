@@ -19,6 +19,7 @@
 .site-layout .site-layout-background {
   background: #fff;
   box-shadow: 0 0 1.5px #ccc;
+
 }
 .ant-layout-sider-dark{
     background-color: white !important;
@@ -38,6 +39,8 @@
   border-radius: 5px;
   justify-content: space-between;
 }
+
+
 .ant-menu-dark{
   background-color: white !important;
 }
@@ -96,4 +99,9 @@
 .spinner-border{
   height: 80px;
   width: 80px;
+}
+
+.ant-layout-content{
+  height: 80vh;
+  overflow-y: scroll;
 }
