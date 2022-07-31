@@ -54,6 +54,10 @@
 .ant-menu-item{
   color: black !important;
 }
+
+.ant-row-space-between{
+  justify-content: flex-start;
+}
 .anticon svg {
   width: 20px;
   height: 20px;
