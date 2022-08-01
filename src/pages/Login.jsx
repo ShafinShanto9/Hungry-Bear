@@ -13,9 +13,10 @@ const onFinish = (values) => {
      dispatch({type:'showLoading'})
      axios.post('/api/user/login', values)
          .then((res) => {
+            
             dispatch({ type: 'hideLoading' })
             message.success('login Successfull')     
-            localStorage.setItem('pos-user', res.data)
+            localStorage.setItem('pos-user', JSON.stringify(res.data))
             navigate('/home')
          }).catch(() => {
         dispatch({type:'hideLoading'})
