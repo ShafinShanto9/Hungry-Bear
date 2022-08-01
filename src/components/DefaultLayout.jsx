@@ -77,13 +77,7 @@ const DefaultLayout = ({children}) => {
             className: 'trigger',
             onClick: () => setCollapsed(!collapsed),
           })}
-
-            <div class="input-group ml-3 w-50">
-              <input type="text" class="form-control" placeholder=" Search your product" aria-label="product name" aria-describedby="button-addon2" >
-            </input>
-             <button className='btn search-btn-styling'><SearchOutlined /></button>
-            </div>  
-                   
+        
           <div
             onClick={()=>{navigate('/cart')}}
             className='cart-count d-flex align-items-center font-weight-bold mr-2 
