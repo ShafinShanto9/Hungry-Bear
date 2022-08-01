@@ -1,13 +1,34 @@
-import { Form, Input } from 'antd'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Form, Input, message } from 'antd'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import '../resources/authentication.css'
-
+import axios from 'axios'
+import {useDispatch} from 'react-redux'
 const Login = () => {
 
- const onFinish = (values) => {
-    console.log(values);
-}
+const dispatch = useDispatch()
+const navigate = useNavigate()
+    
+const onFinish = (values) => {
+     dispatch({type:'showLoading'})
+     axios.post('/api/user/login', values)
+         .then((res) => {
+            dispatch({ type: 'hideLoading' })
+            message.success('login Successfull')     
+            localStorage.setItem('pos-user', res.data)
+            navigate('/home')
+         }).catch(() => {
+        dispatch({type:'hideLoading'})
+         message.error("somethings went wrong")
+     })
+    }
+    
+    useEffect(() => {
+        if (localStorage.getItem('pos-user')) {
+            navigate('/home')
+        }
+    }, [])
+    
 
 return ( 
         <section className="text-center w-100 register">
@@ -27,7 +48,7 @@ return (
                 <h2 className="fw-bold mb-5">Hungry bear Login</h2>
                         
             <Form layout='vertical' onFinish={onFinish}>
-                <Form.Item  name='userid' label='User Id'>
+                <Form.Item  name='userId' label='User Id'>
                     <Input />
                 </Form.Item>                             
                 <Form.Item name='password' label='Password'>

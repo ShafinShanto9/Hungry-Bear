@@ -8,6 +8,7 @@ import Items from './pages/Items';
 import CartPage from './pages/CartPage';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import ProtectedRoute from './hooks/ProtectedRoute';
 
 
 function App() {
@@ -15,11 +16,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/home' element={ <HomePage/>} />
-          <Route path='/item' element={ <Items/>} />
-          <Route path='/cart' element={ <CartPage/>} />
+          <Route path='/home' element={ <ProtectedRoute > <HomePage/> </ProtectedRoute> } />
+          <Route path='/item' element={ <ProtectedRoute><Items/></ProtectedRoute> } />
+          <Route path='/cart' element={ <ProtectedRoute><CartPage/></ProtectedRoute>} />
           <Route path='/register' element={ <Register/>} />
           <Route path='/login' element={ <Login/>} />
+          <Route path='/' element={ <Login/>} />
         </Routes>
       </BrowserRouter>
     </div>
