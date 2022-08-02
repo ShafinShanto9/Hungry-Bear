@@ -5,6 +5,7 @@ import {DeleteOutlined, PlusCircleOutlined,MinusCircleOutlined} from '@ant-desig
 import { useState } from 'react'
 import '../resources/cartPage.css'
 import { Button, Form, Input, message, Modal, Select, Table } from 'antd'
+import axios from 'axios'
 
 const CartPage = () => {
 
@@ -81,11 +82,16 @@ const CartPage = () => {
         const reqObj = {
             ...values,
             subTotal,
-            TAX: Number(((subTotal / 100) * 10).toFixed(2)),
+            cartItems,
+            Tax: Number(((subTotal / 100) * 10).toFixed(2)),
             TotalAmount: Number((subTotal+ Number((subTotal / 100)*10)).toFixed(2)),
             userId: JSON.parse(localStorage.getItem('pos-user'))._id
         }
-        console.log(reqObj);
+        axios.post('/api/bills/charge-bill', reqObj).then(() => {
+            message.success('Bill Charged Successfully')
+        }).catch(() => {
+            message.error("something went wrong")
+        })
     }
 
 
