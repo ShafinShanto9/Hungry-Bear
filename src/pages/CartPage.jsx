@@ -1,13 +1,17 @@
-import { Table } from 'antd'
-import React from 'react'
+import { Button, Modal, Table } from 'antd'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import DefaultLayout from '../components/DefaultLayout'
 import {DeleteOutlined, PlusCircleOutlined,MinusCircleOutlined} from '@ant-design/icons'
+import { useState } from 'react'
+import '../resources/cartPage.css'
 
 const CartPage = () => {
 
     const { cartItems } = useSelector(state => state.rootReducer)
     const dispatch = useDispatch()
+    const [subTotal, setSubTotal] = useState(0)
+    const [billChargeModal, setBillChargeModal] = useState(false)
 
     const increaseQuantity = (record) => {
         
@@ -62,11 +66,29 @@ const CartPage = () => {
         }
     ]
 
+    useEffect(() => {
+        let tempTotal = 0
+
+        cartItems.forEach(item => {
+            tempTotal = tempTotal + (item.price * item.quantity)
+        });
+        setSubTotal(tempTotal)
+        
+    },[cartItems])
+
 
   return (
       <DefaultLayout>
           <div>CartPage</div>
-          <Table columns={columns} dataSource={cartItems}/>
+          <Table columns={columns} dataSource={cartItems} />
+          <hr />
+          <div className='d-flex justify-content-end flex-column align-items-end'>
+              <div className='sub-total'>
+                  <h3>SUB TOTAL : $ { subTotal} </h3>
+              </div>
+              <Button onClick={()=>{setBillChargeModal(true)}}>Charge Bill</Button>
+          </div>
+          <Modal title='Charge Bill' visible={billChargeModal}></Modal>
     </DefaultLayout>
   )
 }
