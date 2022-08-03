@@ -6,6 +6,7 @@ import { useState } from 'react'
 import '../resources/cartPage.css'
 import { Button, Form, Input, message, Modal, Select, Table } from 'antd'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const CartPage = () => {
 
@@ -13,7 +14,7 @@ const CartPage = () => {
     const dispatch = useDispatch()
     const [subTotal, setSubTotal] = useState(0)
     const [billChargeModal, setBillChargeModal] = useState(false)
-
+    const navigate = useNavigate()
     const increaseQuantity = (record) => {
         
         dispatch({
@@ -89,6 +90,7 @@ const CartPage = () => {
         }
         axios.post('/api/bills/charge-bill', reqObj).then(() => {
             message.success('Bill Charged Successfully')
+            navigate('/bills')
         }).catch(() => {
             message.error("something went wrong")
         })

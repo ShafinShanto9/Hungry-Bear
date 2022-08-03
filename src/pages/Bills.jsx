@@ -21,8 +21,10 @@ const Bills = () => {
     dispatch({type: 'showLoading'})
     await axios.get('/api/bills/get-all-bills').then((res) => {
 
-      dispatch({type: 'hideLoading'})
-      setBillData(res.data);
+      dispatch({ type: 'hideLoading' })
+      const data = res.data
+      data.reverse()
+      setBillData(data);
 
     }).catch((error) => {
       
