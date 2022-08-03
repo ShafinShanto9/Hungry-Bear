@@ -9,6 +9,8 @@ import CartPage from './pages/CartPage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import ProtectedRoute from './hooks/ProtectedRoute';
+import Bills from './pages/Bills';
+import Customer from './pages/Customer';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           <Route path='/home' element={ <ProtectedRoute > <HomePage/> </ProtectedRoute> } />
           <Route path='/item' element={ <ProtectedRoute><Items/></ProtectedRoute> } />
           <Route path='/cart' element={ <ProtectedRoute><CartPage/></ProtectedRoute>} />
+          <Route path='/bills' element={ <ProtectedRoute><Bills/></ProtectedRoute>} />
+          <Route path='/customer' element={ <ProtectedRoute><Customer/></ProtectedRoute>} />
           <Route path='/register' element={ <Register/>} />
           <Route path='/login' element={ <Login/>} />
           <Route path='/' element={ <Login/>} />
