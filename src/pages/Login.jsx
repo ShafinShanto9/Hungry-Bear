@@ -46,7 +46,7 @@ return (
 
             <div className="row d-flex justify-content-center">
             <div className="col-lg-8">
-                <h2 className="fw-bold mb-5">Hungry bear Login</h2>
+                <h2 className="fw-bold mb-5">Please Login</h2>
                         
             <Form layout='vertical' onFinish={onFinish}>
                 <Form.Item  name='userId' label='User Id'>

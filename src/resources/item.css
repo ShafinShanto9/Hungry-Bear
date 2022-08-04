@@ -17,6 +17,10 @@ input:focus{
     justify-items: center;
     cursor: pointer;
 }
+.card-img:hover{
+    transform: scale(1.2);
+    transition: all 1s ease-in-out;
+}
 .category h4{
     margin-right: 25px;
     margin-bottom: 0px;
@@ -25,4 +29,13 @@ input:focus{
 
 .select-category{
      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* Meadia query for scrollbar hidden */
+@media only screen and (max-width: 600px) {
+.categorise{
+    overflow-x: scroll;
+    width: 100%;
+}
+
 }

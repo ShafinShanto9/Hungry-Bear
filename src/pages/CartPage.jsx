@@ -100,13 +100,13 @@ const CartPage = () => {
   return (
       <DefaultLayout>
           <div>CartPage</div>
-          <Table columns={columns} dataSource={cartItems} />
+          <Table columns={columns} dataSource={cartItems} pagination={false} />
           <hr />
           <div className='d-flex justify-content-end flex-column align-items-end'>
               <div className='sub-total'>
                   <h3>SUB TOTAL : $ { subTotal} </h3>
               </div>
-              <Button onClick={()=>{setBillChargeModal(true)}}>Charge Bill</Button>
+              <button className='px-4 py-2' onClick={()=>{setBillChargeModal(true)}}>Charge Bill</button>
           </div>
           <Modal title='Charge Bill' visible={billChargeModal} footer={false}
             onCancel={() => { setBillChargeModal(false) }}>
@@ -137,7 +137,7 @@ const CartPage = () => {
              <button
               className='px-4 py-2'
               type='submit'
-              style={{ backgroundColor: '#9E6051', color: 'white', border: 'none', textAlign: 'center', borderRadius: '5px' }}>
+              >
               GENERATE BILL</button>
           </div>
         </Form>

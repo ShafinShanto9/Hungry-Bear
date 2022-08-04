@@ -51,7 +51,7 @@ const HomePage = () => {
   
   return (
     <DefaultLayout>
-      <div className='d-flex'>
+      <div className='d-flex categorise'>
         {
           categorise.map((category) => (
             <div onClick={()=>setSelectedCategory(category.name)} className={`d-flex category ${selectedCategory === category.name && 'select-category'}`}>

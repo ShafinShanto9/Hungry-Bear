@@ -1,12 +1,10 @@
+import { Table } from 'antd'
 import axios from 'axios'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import DefaultLayout from '../components/DefaultLayout'
-import {DeleteOutlined,EditOutlined,EyeOutlined} from '@ant-design/icons'
-import { Button, Form, Input, message, Modal, Select, Table } from 'antd'
-import '../resources/item.css'
 import '../resources/bills.css'
-import { useReactToPrint } from 'react-to-print';
+import '../resources/item.css'
 
 const Customer = () => {
 

@@ -36,14 +36,18 @@ const DefaultLayout = ({children}) => {
         </div>
       )}
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" >
+        {
+          collapsed ? <div className='mb-5'><h2 className='text-center'><b>H <span style={{ color: '#9E6051' }}>B</span></b> </h2></div>
+          : <div className="logo" >
           <img src="https://i.ibb.co/dpng4c6/bear-logo.png" alt="" srcset="" />
           <h3>HUNGRY BEAR </h3>
-        </div>
+        </div> 
+        }
         <Menu
           theme='dark'
           mode="inline"
           defaultSelectedKeys={window.location.pathname}
+          className={`${collapsed && 'pt-5'}`}
         >
           <Menu.Item key='/home' icon={<HomeOutlined />}>
             <Link to='/home'> Home </Link>
@@ -69,7 +73,7 @@ const DefaultLayout = ({children}) => {
 
         </Menu>
         <div>
-          <ProfileCard/>
+          {!collapsed && <ProfileCard/>}
         </div>
       </Sider>
       <Layout className="site-layout">

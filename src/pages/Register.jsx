@@ -15,7 +15,8 @@ const onFinish = (values) => {
      axios.post('/api/user/register', values)
          .then(() => {
         dispatch({type:'hideLoading'})
-        message.success('Registration Successfull')     
+        message.success('Registration Successfull')
+        navigate('/login')     
          }).catch(() => {
         dispatch({type:'hideLoading'})
          message.error("somethings went wrong")
@@ -43,7 +44,7 @@ return (
 
             <div className="row d-flex justify-content-center">
             <div className="col-lg-8">
-                <h2 className="fw-bold mb-5">Hungry bear register</h2>
+                <h2 className="fw-bold mb-5">Please register</h2>
                         
             <Form layout='vertical' onFinish={onFinish}>
                 <Form.Item  name='name' label='Name'>

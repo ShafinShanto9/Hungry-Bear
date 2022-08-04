@@ -163,7 +163,7 @@ const Items = () => {
              <button
               className='px-4 py-2'
               type='submit'
-              style={{ backgroundColor: '#9E6051', color: 'white', border: 'none', textAlign: 'center', borderRadius: '5px' }}>
+              >
               Save</button>
           </div>
 
